@@ -1,8 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-// ... rest of imports
-import React from 'react';
 // Instead of import { Badge } from './ui/badge';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -352,11 +350,11 @@ interface RunnerGameProps {
   runnerJumping: boolean;
   setRunnerJumping: (jumping: boolean) => void;
   runnerObstacles: number[];
-  setRunnerObstacles: (obstacles: number[]) => void;
+  setRunnerObstacles: React.Dispatch<React.SetStateAction<number[]>>;
   runnerGameOver: boolean;
   setRunnerGameOver: (gameOver: boolean) => void;
   runnerScore: number;
-  setRunnerScore: (score: number) => void;
+  setRunnerScore: React.Dispatch<React.SetStateAction<number>>;
   onComplete: () => void;
   onRestart: () => void;
 }
@@ -383,7 +381,7 @@ export const RunnerGame: React.FC<RunnerGameProps> = ({
     // Game loop
     const gameInterval = setInterval(() => {
       // Move obstacles
-      setRunnerObstacles(prev => {
+      setRunnerObstacles((prev: number[]) => {
         const newObstacles = prev.map(pos => pos - 5).filter(pos => pos > -50);
         
         // Add new obstacle randomly
