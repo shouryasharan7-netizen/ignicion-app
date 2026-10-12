@@ -447,8 +447,17 @@ export const HeritageGamesHub: React.FC<HeritageGamesHubProps> = ({
               return (
                 <div
                   key={card.uid}
+                  role="button"
+                  tabIndex={card.isMatched ? -1 : 0}
+                  aria-label={card.isMatched ? `${card.name} already matched` : card.isFlipped ? `${card.name} revealed` : `Sacred symbol card ${idx + 1}`}
                   onClick={() => handleCardClick(idx)}
-                  className={`aspect-square rounded-xl cursor-pointer perspective-1000 transition-all transform hover:scale-105 duration-200 ${
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleCardClick(idx);
+                    }
+                  }}
+                  className={`aspect-square rounded-xl cursor-pointer perspective-1000 transition-all transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-amber-500 outline-none duration-200 ${
                     card.isMatched ? 'opacity-85 pointer-events-none' : ''
                   }`}
                 >

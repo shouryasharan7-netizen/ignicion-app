@@ -30,6 +30,7 @@ interface UserProfileProps {
   userLevel: number;
   certificates: BlockchainCertificate[];
   onOpenVerifyModalWithCert: (cert: BlockchainCertificate) => void;
+  onRevisitSplash?: () => void;
 }
 
 export const UserProfile: React.FC<UserProfileProps> = ({
@@ -39,7 +40,8 @@ export const UserProfile: React.FC<UserProfileProps> = ({
   userPoints,
   userLevel,
   certificates,
-  onOpenVerifyModalWithCert
+  onOpenVerifyModalWithCert,
+  onRevisitSplash
 }) => {
   const badges = [
     { id: '1', name: 'Dabu Master Guild', icon: '🧵', desc: 'Mastered natural mud-resist geometry' },
@@ -81,7 +83,7 @@ export const UserProfile: React.FC<UserProfileProps> = ({
               <p className="text-xs text-amber-200">
                 Identity: <span className="font-semibold text-white">Shourya Sharan</span> · Sovereign Heritage ID #HHG-8092
               </p>
-              <div className="flex items-center gap-2 pt-1">
+              <div className="flex items-center gap-2 pt-1 flex-wrap">
                 <Badge variant="outline" className="border-amber-300/60 text-amber-200 text-xs">
                   {userRole === 'artisan' ? 'Role: Master Artisan' : 'Role: Heritage Explorer'}
                 </Badge>
@@ -96,6 +98,19 @@ export const UserProfile: React.FC<UserProfileProps> = ({
                 >
                   Switch Role
                 </Button>
+                {onRevisitSplash && (
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => {
+                      soundManager.playClick();
+                      onRevisitSplash();
+                    }}
+                    className="h-6 text-[10px] text-amber-300 hover:text-white hover:bg-white/10 px-2"
+                  >
+                    Revisit Intro
+                  </Button>
+                )}
               </div>
             </div>
           </div>

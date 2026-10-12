@@ -40,7 +40,10 @@ export const BottomNav: React.FC<BottomNavProps> = ({
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-xl border-t border-amber-200/60 shadow-lg px-2 py-1.5 transition-all">
+    <nav 
+      aria-label="Sanctuary Navigation Dock"
+      className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-xl border-t border-amber-200/60 shadow-lg px-2 py-1.5 pb-[max(0.375rem,env(safe-area-inset-bottom))] transition-all"
+    >
       <div className="max-w-4xl mx-auto flex items-center justify-around">
         {tabs.map((tab) => {
           const Icon = tab.icon;

@@ -281,7 +281,7 @@ export const IoTDashboard: React.FC<IoTDashboardProps> = ({
         </div>
 
         {/* Right Column: Live Sensor Telemetry Gauges */}
-        <div className="lg:col-span-8 space-y-4">
+        <div className="lg:col-span-8 space-y-4" aria-live="polite" aria-label="Live Sensor Telemetry Gauges">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Sensor 1: Temperature */}
             <Card className="p-5 rounded-2xl bg-white border-slate-200 shadow-sm relative overflow-hidden">

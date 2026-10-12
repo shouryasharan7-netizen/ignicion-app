@@ -265,6 +265,7 @@ export default function App() {
             userLevel={userLevel}
             certificates={userCertificates}
             onOpenVerifyModalWithCert={handleOpenVerifyModalWithCert}
+            onRevisitSplash={() => setHasEntered(false)}
           />
         )}
       </main>
